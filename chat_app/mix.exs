@@ -11,6 +11,7 @@ defmodule ChatApp.MixProject do
       aliases: aliases(),
       deps: deps(),
       compilers: [:phoenix_live_view] ++ Mix.compilers(),
+      releases: [chat_app: [include_executables_for: [:unix]]],
       listeners: [Phoenix.CodeReloader]
     ]
   end
@@ -74,7 +75,8 @@ defmodule ChatApp.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.2.0"},
       {:bandit, "~> 1.5"},
-      {:mongodb_driver, "~> 1.6"}
+      {:mongodb_driver, "~> 1.6"},
+      {:castore, "~> 1.0"}
     ]
   end
 
