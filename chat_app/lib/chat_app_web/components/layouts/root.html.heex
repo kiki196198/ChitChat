@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title default="Chatrooms" suffix=" · private conversation" phx-no-format>
+      {assigns[:page_title]}
+    </.live_title>
+    <link phx-track-static rel="stylesheet" href={~p"/assets/css/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/js/app.js"}>
+    </script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <.link navigate={~p"/"} class="brand-lockup" aria-label="Chatrooms home">
+          <span class="brand-mark" aria-hidden="true">C</span>
+          <span class="brand-name">CHATROOMS</span>
+        </.link>
+        <nav class="site-nav" aria-label="Main navigation">
+          <%= if assigns[:current_scope] && assigns.current_scope.user do %>
+            <span class="nav-identity">{assigns.current_scope.user.display_name}</span>
+            <.link navigate={~p"/rooms"} class="nav-link">Rooms</.link>
+            <.link navigate={~p"/users/settings"} class="nav-link">Account</.link>
+            <.link href={~p"/users/log-out"} method="delete" class="nav-cta nav-cta-quiet">
+              Sign out
+            </.link>
+          <% else %>
+            <.link navigate={~p"/users/log-in"} class="nav-cta">
+              Continue with Google <span aria-hidden="true">↗</span>
+            </.link>
+          <% end %>
+        </nav>
+      </header>
+      {@inner_content}
+      <footer class="site-footer">
+        <span>CHATROOMS</span>
+        <span>Made for conversations that matter.</span>
+      </footer>
+    </div>
+  </body>
+</html>

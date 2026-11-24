@@ -30,3 +30,6 @@ erl_crash.dump
 
 # Language Server temporary files.
 .elixir_ls/
+docker/.env
+docker/.env.*
+docker/mongo-keyfile

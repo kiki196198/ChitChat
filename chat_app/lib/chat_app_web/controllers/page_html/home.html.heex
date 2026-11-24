@@ -1,0 +1,61 @@
+<Layouts.app flash={@flash} current_scope={@current_scope}>
+  <div class="home-main">
+    <main class="landing-hero">
+      <section class="hero-copy">
+        <div class="eyebrow">A quieter kind of connection</div>
+        <h1>Conversation, with room to <em>breathe.</em></h1>
+        <p>
+          A considered place for private conversations and the people you want close.
+          No noise. Just room to be present.
+        </p>
+        <div class="hero-actions">
+          <%= if @current_scope && @current_scope.user do %>
+            <.link navigate={~p"/rooms"} class="button-primary">
+              Open your rooms <span aria-hidden="true">↗</span>
+            </.link>
+          <% else %>
+            <.link navigate={~p"/users/log-in"} class="button-primary">
+              Continue with Google <span aria-hidden="true">↗</span>
+            </.link>
+          <% end %>
+        </div>
+      </section>
+
+      <aside class="hero-visual" aria-label="A preview of a quiet conversation">
+        <div class="hero-frame">
+          <div class="frame-topline">
+            <span>Saturday, 8:42 pm</span>
+            <span class="frame-status">Present</span>
+          </div>
+          <div class="frame-rule"></div>
+          <div class="frame-conversation">
+            <span class="frame-note">Mara · a moment ago</span>
+            <div class="message-line">Some evenings deserve a slower pace.</div>
+            <span class="frame-note" style="justify-self: end">You · just now</span>
+            <div class="message-line message-line-right">
+              I saved you a little quiet.
+              <div class="message-meta">Delivered · 8:42 pm</div>
+            </div>
+          </div>
+          <span class="frame-caption">A private room for two</span>
+        </div>
+        <span class="hero-index">01 / 03</span>
+      </aside>
+    </main>
+
+    <section class="home-detail" aria-label="What makes Chatrooms different">
+      <div class="detail-item">
+        <strong>Private by design</strong>
+        <span>Your conversations stay between the people in the room.</span>
+      </div>
+      <div class="detail-item">
+        <strong>Thoughtfully simple</strong>
+        <span>A calm space that keeps the conversation at the center.</span>
+      </div>
+      <div class="detail-item">
+        <strong>Always in order</strong>
+        <span>Pick up where you left off, with the full story intact.</span>
+      </div>
+    </section>
+  </div>
+</Layouts.app>
